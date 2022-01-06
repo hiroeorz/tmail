@@ -114,10 +114,10 @@ module TMail
     lwsp         = %Q| \t\r\n|
     control      = %Q|\x00-\x1f\x7f-\xff|
 
-    CONTROL_CHAR  = /[#{control}]/n
-    ATOM_UNSAFE   = /[#{Regexp.quote aspecial}#{control}#{lwsp}]/n
-    PHRASE_UNSAFE = /[#{Regexp.quote aspecial}#{control}]/n
-    TOKEN_UNSAFE  = /[#{Regexp.quote tspecial}#{control}#{lwsp}]/n
+    CONTROL_CHAR  = Regexp.new("[#{control}]", nil, "n")
+    ATOM_UNSAFE   = Regexp.new("[#{Regexp.quote aspecial}#{control}#{lwsp}]", nil, "n")
+    PHRASE_UNSAFE = Regexp.new("[#{Regexp.quote aspecial}#{control}]", nil, "n")
+    TOKEN_UNSAFE  = Regexp.new("[#{Regexp.quote tspecial}#{control}#{lwsp}]", nil, "n")
     
     # Returns true if the string supplied is free from characters not allowed as an ATOM
     def atom_safe?( str )
