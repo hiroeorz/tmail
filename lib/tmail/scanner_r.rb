@@ -63,24 +63,24 @@ module TMail
     PATTERN_TABLE = {}
     PATTERN_TABLE['EUC'] =
       [
-        /\A(?:[#{atomchars}]+|#{iso2022str}|#{eucstr})+/n,
-        /\A(?:[#{tokenchars}]+|#{iso2022str}|#{eucstr})+/n,
+        Regexp.new("\A(?:[#{atomchars}]+|#{iso2022str}|#{eucstr})+", nil, "n"),
+        Regexp.new("\A(?:[#{tokenchars}]+|#{iso2022str}|#{eucstr})+", nil, "n"),
         quoted_with_iso2022,
         domlit_with_iso2022,
         comment_with_iso2022
       ]
     PATTERN_TABLE['SJIS'] =
       [
-        /\A(?:[#{atomchars}]+|#{iso2022str}|#{sjisstr})+/n,
-        /\A(?:[#{tokenchars}]+|#{iso2022str}|#{sjisstr})+/n,
+        Regexp.new("\A(?:[#{atomchars}]+|#{iso2022str}|#{sjisstr})+", nil, "n"),
+        Regexp.new("\A(?:[#{tokenchars}]+|#{iso2022str}|#{sjisstr})+", nil, "n"),
         quoted_with_iso2022,
         domlit_with_iso2022,
         comment_with_iso2022
       ]
     PATTERN_TABLE['UTF8'] =
       [
-        /\A(?:[#{atomchars}]+|#{utf8str})+/n,
-        /\A(?:[#{tokenchars}]+|#{utf8str})+/n,
+        Regexp.new("\A(?:[#{atomchars}]+|#{utf8str})+", nil, "n"),
+        Regexp.new("\A(?:[#{tokenchars}]+|#{utf8str})+", nil, "n"),
         quoted_without_iso2022,
         domlit_without_iso2022,
         comment_without_iso2022
@@ -258,4 +258,3 @@ module TMail
   end
 
 end   # module TMail
-#:startdoc:
